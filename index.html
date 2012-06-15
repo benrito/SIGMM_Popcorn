@@ -1,0 +1,55 @@
+<html>
+ <head>
+ <style>
+ </style>
+ </head>
+ <body>
+ <h1>Mozilla Popcorn: Web Video Interaction Using Client-Side Javascript</h1>
+ <p>Bobby Richter and Ben Moskowitz lead Popcorn software development at the Mozilla Foundation.</p>
+ <h2>Context and history</h2>
+<a href="http://www.rebelliouspixels.com/semanticremix/"> <img src="donald.jpg" style="float: right; margin-left: 50px; border: 10px solid grey;"></a>
+ <p>Popcorn is an HTML5 media project from Mozilla, the non-profit organization that makes the Firefox web browser. It makes media-oriented web development easy through shared development, open source libraries and tools.</p>
+ <h2>Popcorn.js: a Javascript library for interactions between video and the web</h2>
+ <p><a href="http://popcornjs.org">Popcorn.js</a> makes web media more connected by providing an event-driven API to hook &lt;video&gt; and &lt;audio&gt; content into the of the capibilities of the web platform (developer.mozilla.org).</p>
+ <p>Prior to HTML5, web video lived exclusively inside browser plug-ins like Flash and VLC, which put it outside the reach of JavaScript, CSS, and other techniques for interacting with the rest of the surrounding HTML document.</p>
+ <p>Popcorn.js turns media into fully-interactive JavaScript objects, so that media objects can both trigger and listen for events. It enables developers to cue events along a media timeline using a simple Javascript syntax:</p>
+ <pre>
+var pop = Popcorn("#my-video");
+pop.text({
+ start: 1.38,
+ end: 5.12,
+ text: "Hello World",
+ target: "my-div"
+});
+pop.play();
+ </pre>
+ <p>Live source available at <a href="http://jsfiddle.net/p8Kbs/80/">http://jsfiddle.net/p8Kbs/80/</a>.</p>
+ <p>Additionally, media playback is accessible via popcorn.play(), popcorn.pause(), and popcorn.currentTime(seconds), which allows you to jump to any point in the timeline of the referenced media. As a nod toward the expectations of media producers and videographers, Popcorn.js also provides methods like popcorn.cue(), which simply ties actions to specific times.</p>
+ <p>Aside from simple time-based triggers, you can use popcorn.listen(event,callback_function) to bind the callback function to a specified event. Built-in events are provided to handle typical HTML5 web video playback scenarios, such as &quot;play,&quot; &quot;pause,&quot; &quot;loadstart,&quot; &quot;seeked,&quot; &quot;volumechange,&quot; and so on. However, you can define custom events and trigger them directly by using popcorn.trigger(event[,data]), where the data parameter is an optional data object to send to listeners.</p>
+ <h2>Extensibility</h2>
+ <p>By design, Popcorn is extensible. Mozilla supports about 20 plugins that come packaged with the library, ranging from simple HTML element insertion, to complex data retrieval and aggregation. Examples include a subtitle plugin, a GoogleMaps plugin, a Twitter plugin, a Facebook plugin, and a JavaScript code plugin.</p>
+ <p>If some desired functionality doesn't yet exist in the library, Popcorn.js has a well-documented plugin architecture: <a href="http://popcornjs.org/popcorn-docs/addon-development/">http://popcornjs.org/popcorn-docs/addon-development/</a>.</p>
+ <p>Popcorn works best with HTML5 media, but also has wrappers for arbitary objects (through the &quot;baseplayer&quot;) and Flash players, like YouTube, Vimeo, Flowplayer, and Soundcloud. It's easy to write a wrapper for any web-oriented video player.</p>
+ <p>Popcorn also includes a set of parsers for reading common data files (SRT, TTML, XML, etc). Of course, as with other parts of Popcorn, it is easy to create a custom data parser.</p>
+ <p>Tested thoroughly, Popcorn.js supports all modern browsers and IE8. Currently, it's stable at version 1.2. You can download the Popcorn source or use a web-based build tool to wrap a custom, compressed version.</p>
+ <h2>Potential Applications</h2>
+ <p>Popcorn is in use by a range of publishers, service providers, creative coders and individuals to mash video with the rest of the web.</p>
+<a href="http://www.ramp.com/solutions/optimized-video/metaplayer/popcorn/"> <img src="ramp.jpg"></a>
+ <p>RAMP, a content optimization company, uses an automated process to display time-coded metadata about significant people, places and things whenever they are mentioned in a video. Using Popcorn, RAMP can support a range of player types and contexts (web, mobile, headless) by developing against the common Popcorn API (<a href="http://www.ramp.com/solutions/optimized-video/metaplayer/popcorn/">http://www.ramp.com/solutions/optimized-video/metaplayer/popcorn/</a>).</p>
+ <p>The Dutch multimedia archive Beeld en Geluid has used Popcorn to create a &quot;living archive,&quot; connecting cultural archival material with a range of semantic metadata (<a href="http://www.openimages.eu/blog/2012/01/13/open-images-videos-enriched-with-open-data/">http://www.openimages.eu/blog/2012/01/13/open-images-videos-enriched-with-open-data/</a>).</p>
+ <a href="http://yoyodyne.cc/h/"><img src="hyper.jpg"> </a> <a href="http://hyper-audio.org/r/"><img src="radio.jpg"></a>
+ <p>Popcorn has also been used to create hyperlinked transcripts that use text as an interface for traversing and editing long media assets (<a href="http://yoyodyne.cc/h/">http://yoyodyne.cc/h/</a>)</p>
+ <p>Aside from scale applications, Popcorn is also supported by a burgeoning creative community (In fact, the project was started and is run by Brett Gaylor--a filmmaker!). For instance, documentary producer Kat Cizek uses Popcorn to create web based interactive films. In &quot;1 Millionth Tower,&quot; the web browser creates a navigable 3D space that simulates high rises in major cities around the world. Popcorn is used to turn the camera at key moments, spawn visual effects, and to download live weather data from web APIs. If it's raining in Toronto, it's also raining in virtual Toronto (<a href="http://highrise.nfb.ca/onemillionthtower/1mt_webgl.php">http://highrise.nfb.ca/onemillionthtower/1mt_webgl.php</a>).</p>
+ <h2>Popcorn Maker</h2>
+ <p>A key goal of the Popcorn project is to enable more connected web video on a mass scale, and to open creative possibilities to individual media-makers. Popcorn Maker is a user-facing web application used to create interactive media. It requires no code knowledge. Users pick a video from YouTube or the wider web, open the media object in a prepared HTML template, customize the project, and publish.</p>
+ <a href="http://mozillapopcorn.org">
+ <img src="maker1.jpg">
+ <img src="maker2.jpg">
+ </a>
+ <p>Popcorn Maker can be used to create pop-up videos, multimedia reports, guided web tours and more. Project composition happens live in the browser. Users can drag and drop events onto a timeline interface, position objects on the page, and watch a live preview of the project be constructed. Popcorn Maker projects are entirely human-readable HTML, CSS and Javascript.</p>
+ <p>For the time being, Popcorn Maker does not support media editing and sequencing. Users must come prepared with an edited video file. For this reason, Popcorn Maker is not a web-based video editor--rather, it's a video-based web editor. We may revisit this decision later when web browsers handle media playback and synchronization more precisely.</p>
+ <p>Like the rest of the Popcorn project, Popcorn Maker is 100% free and open source. Developers of time-based multimedia apps are encouraged to build on the Butter SDK (source code available at <a href="http://github.com/mozilla/butter">http://github.com/mozilla/butter</a>) and contribute back to the project. At the time of this writing, Popcorn Maker is in active development at version 0.5, and is scheduled for a 1.0 release in late 2012. <a href="http://mozillapopcorn.org">http://mozillapopcorn.org</a>.</p>
+ <h2>Credits</h2>
+ The Popcorn project and its constituents are lovingly crafted by Ben Moskowitz, Bobby Richter, Brett Gaylor, David Seifried, Christopher De Cairos, Matthew Schranz, Jon Buckley, Scott Downe, Mohammed Buttu, Kate Hudson, David Humphrey, Jeremy Banks, Brian Chirls, James Burke, Robert Stanica, Anna Sobiepanek, Rick Waldron, Nick Cammarata, Daniel Hodgin, Daniel Brooks, Boaz Sender, Dan Ventura, Brad Chen, Minoo Ziaei, Cesar Gomes, Steven Weerdenburg, Cole Gillespie, and Nick Doiron.
+ </body>
+</html>
